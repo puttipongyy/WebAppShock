@@ -1,0 +1,764 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #8c52ff, #ff914d);
+    color: white;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 90px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background: linear-gradient(90deg, #660ea5b7, #373138);
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    color: #ffdd59;
+    font-weight: 2000;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+.navbar-logo:hover {
+    transform: scale(1.1);
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 50px; /* ระยะห่างระหว่างปุ่ม */
+    margin-right: 90px; /* ขยับให้ไม่ชิดขอบ */
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: #ffdd59;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: #ffdd59;
+    background: rgba(255, 221, 89, 0.1);
+    border-radius: 5px;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.container {
+    margin: 20px 100px;
+    margin-top: 100px;
+    margin-bottom: 1px;
+    margin-left: 280px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff10;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
+
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 15px;
+}
+
+ul li span {
+    font-weight: bold;
+}
+
+
+.back-button {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 1030px;
+    padding: 10px 40px;
+    background-color: white;
+    color: #6a0dad;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.back-button:hover {
+    background-color: #ff7017;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.next-button {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    padding: 10px 40px;
+    background-color: white;
+    color: #6a0dad;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #ff7017;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* ปุ่ม Clear Filter */
+#clearFilterBtn {
+    display: inline-block;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    background-color: white;
+    color: #6a0dad;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#clearFilterBtn:hover {
+    background-color: #ff914d;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* ปุ่ม Select */
+#selectBtn {
+    display: inline-block;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    background-color: white;
+    color: #6a0dad;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#selectBtn:hover {
+    background-color: #ff914d;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* ให้ checkbox มีความกว้างพอดี */
+.table-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.button-group {
+    display: flex;
+    gap: 20px; /* ระยะห่างระหว่างปุ่ม */
+    justify-content: left; /* จัดให้อยู่ตรงกลาง */
+    margin-top: 20px;
+}
+
+.table-container {
+    max-height: 390px; /* กำหนดความสูงสูงสุดของตาราง */
+    overflow-y: auto; /* ทำให้สามารถเลื่อนลงไปดูข้อมูลเพิ่มเติมได้ */
+    border: white; /* เส้นขอบรอบตาราง */
+    scrollbar-width: thin; /* สำหรับ Firefox */
+    scrollbar-color: #6a0dad rgba(255, 255, 255, 0.2);    
+}
+
+/* ปรับแต่ง Scrollbar สำหรับ Chrome, Edge, และ Safari */
+.table-container::-webkit-scrollbar {
+    width: 8px; /* ความกว้างของ scrollbar */
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2); /* สีพื้นหลังของ track */
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #6a0dad; /* สีของ scrollbar */
+    border-radius: 10px; /* ให้มีขอบมน */
+    transition: background 0.3s ease;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #6a0dad; /* เปลี่ยนสีเมื่อ hover */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid rgb(255, 255, 255);
+}
+th, td {
+    padding: 10px;
+    /* border: 1px solid white; */
+     border:  white;
+    background-color: black;
+    text-align: center;
+}
+th {
+    background-color: #ffffff;
+    color: black;
+}
+
+td {
+    background-color: black;
+    color: white;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #ffac2e;
+    z-index: 2;
+}
+
+.filter-container {
+    padding: 8px 10px;
+    background-color: #ffffff10;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap: 10px;
+    margin: 0 auto 20px auto; /* ทำให้กึ่งกลาง */
+    flex-wrap: wrap;
+    border-radius: 15px; /* ขอบมน */
+    max-width: 850px; /* จำกัดความกว้างของกล่อง */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* เพิ่มเงา */
+}
+
+.filter-container label {
+    font-size: 1rem;
+    border: none;
+    /* color: rgb(255, 255, 255); */
+}
+
+.filter-container select,
+.filter-container input {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    /* border: 2px solid #6a0dad; */
+    font-weight: bold;
+    /* background: rgba(255, 255, 255, 0.911); */
+    color: #6a0dad;
+    outline: none;
+    font-size: 1rem;
+}
+
+.filter-container input::placeholder {
+    color: #6a0dad;
+    border: none;
+}
+
+.filter-container select:focus,
+.filter-container input:focus {
+    /* background: rgb(214, 214, 214); */
+    border-color: #6a0dad;
+    border: none;
+}
+
+.chart-container {
+    margin: 20px 100px;
+    margin-top: 20px;
+    margin-bottom: 1px;
+    margin-left: 280px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff10;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
+
+}
+.chart-controls {
+    margin-bottom: 15px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap: 10px;
+    margin: 0 auto 20px auto;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    max-width: 850px;
+    background-color: #ffffff10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);}
+
+/* ✅ ปรับแต่ง Label */
+/* .chart-controls label {
+    font-size: 1rem;
+    border: none;
+} */
+
+/* ✅ ปรับแต่ง Select Box */
+.chart-controls select {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    color: #6a0dad;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* ✅ เมื่อ Select ถูกโฟกัส */
+.chart-controls select:focus {
+    border-color: #6a0dad;
+    border: none;
+}
+
+/* ✅ เพิ่มการเปลี่ยนแปลงเมื่อ Hover */
+.chart-controls select:hover {
+    background-color: rgba(106, 13, 173, 0.1); /* สีพื้นหลังเมื่อ hover */
+}
+
+canvas {
+    max-width: 90%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 50px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+/* ✅ สีของแถวที่ถูกเลือก */
+.selected-row {
+    background-color: #d1e7dd !important; /* สีเขียวอ่อน */
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* ✅ ป้องกันสีเดิมของตารางมาทับ */
+.table-container table tr:hover {
+    background-color: #f5f5f5; /* สีเทาอ่อนเมื่อ hover */
+}
+
+/* ✅ ป้องกัน style อื่น ๆ มารบกวน */
+.table-container table tr.selected-row:hover {
+    background-color: #c3e6cb !important; /* สีเขียวเข้มขึ้นเล็กน้อยเมื่อ hover */
+}
+
+/* ปุ่ม Export CSV ในส่วนของฟิลเตอร์ */
+#exportCsvBtn {
+    display: inline-block;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    background-color: white;
+    color: #6a0dad;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+#exportCsvBtn:hover {
+    background-color: #ff914d;
+    color: white;
+    transform: translateY(-3px);
+}
+
+#exportCsvBtn:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* สไตล์สำหรับส่วน Export กราฟ */
+.export-buttons, .report-buttons {
+    margin: 20px 0;
+    text-align: center;
+    padding: 8px 10px;
+    background-color: #ffffff10;
+    border-radius: 15px;
+    max-width: 850px;
+    margin: 15px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.export-buttons span, .report-buttons span {
+    margin-right: 15px;
+    font-weight: bold;
+    color: white;
+    font-size: 1rem;
+}
+
+.export-buttons button, .report-buttons button {
+    display: inline-block;
+    border: none;
+    margin: 5px;
+    padding: 8px 15px;
+    background-color: white;
+    color: #6a0dad;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.export-buttons button:hover, .report-buttons button:hover {
+    background-color: #ff914d;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.export-buttons button:disabled, .report-buttons button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ปุ่ม Report มีสไตล์พิเศษเพิ่มเติม */
+.report-buttons {
+    background-color: rgba(255, 255, 255, 0.15); /* สีพื้นหลังเข้มกว่าเล็กน้อย */
+}
+
+#pdfReportBtn {
+    background-color: #f8f9fa;
+    color: #e74c3c; /* สีแดงคล้าย PDF */
+}
+
+#pdfReportBtn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+#docxReportBtn {
+    background-color: #f8f9fa;
+    color: #2b579a; /* สีน้ำเงินคล้าย Word */
+}
+
+#docxReportBtn:hover {
+    background-color: #2b579a;
+    color: white;
+}
+
+.risk-level {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* สีสำหรับระดับความเสี่ยงต่างๆ */
+.risk-none {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+.risk-low {
+    background-color: rgba(92, 184, 92, 0.2);
+    color: #5cb85c;
+    border: 1px solid #5cb85c;
+}
+
+.risk-medium {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    border: 1px solid #ffc107;
+}
+
+.risk-high {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+/* สไตล์สำหรับกราฟที่มีการระบายสีพื้นหลัง */
+.chart-background-green {
+    background: linear-gradient(to top, rgba(40, 167, 69, 0.1), rgba(40, 167, 69, 0.2));
+}
+
+.chart-background-red {
+    background: linear-gradient(to top, rgba(220, 53, 69, 0.1), rgba(220, 53, 69, 0.2));
+}
+
+/* สไตล์สำหรับเส้นแบ่งความเสี่ยง 50% */
+.threshold-line {
+    border-top: 2px dashed #888;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+    z-index: 5;
+}
+
+.threshold-label {
+    position: absolute;
+    right: 10px;
+    background-color: #fff;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    z-index: 6;
+}
+
+
+/* สไตล์สำหรับข้อความแสดงความเปลี่ยนแปลงความเสี่ยง */
+.risk-diff-label {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+    z-index: 12;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    pointer-events: none; /* ทำให้คลิกผ่านได้ */
+    transition: all 0.2s ease; /* เอฟเฟกต์เคลื่อนไหวเล็กน้อย */
+}
+
+/* สีสำหรับค่าที่เพิ่มขึ้นมาก */
+.risk-diff-increased {
+    border: 1px solid #dc3545;
+    color: #dc3545;
+}
+
+/* สีสำหรับค่าที่เพิ่มขึ้นน้อย */
+.risk-diff-slight-increase {
+    border: 1px solid #ffc107;
+    color: #ffc107;
+}
+
+/* สีสำหรับค่าที่ลดลง */
+.risk-diff-decreased {
+    border: 1px solid #28a745;
+    color: #28a745;
+}
+
+/* เอฟเฟกต์เมื่อ hover */
+.risk-diff-label:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* ปรับขนาดข้อความตามความเปลี่ยนแปลง */
+.risk-diff-significant {
+    font-size: 12px;
+    padding: 3px 6px;
+}
+/* สไตล์สำหรับกล่องสรุปความเปลี่ยนแปลงความเสี่ยง */
+.risk-change-summary-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #000000;
+    color: black;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+.risk-change-summary-box h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.risk-change-summary-box table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.risk-change-summary-box th {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+}
+
+.risk-change-summary-box td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.risk-change-summary-box tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.risk-change-summary-box tr:hover {
+    background-color: #f0f0f0;
+}
+
+.risk-change-summary-box .risk-change-positive {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.risk-change-summary-box .risk-change-slight-positive {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.risk-change-summary-box .risk-change-negative {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.risk-change-summary-box .actions {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.risk-change-summary-box button {
+    padding: 6px 12px;
+    background-color: #6a0dad;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.risk-change-summary-box button:hover {
+    background-color: #5a0a8a;
+}
+/* รองรับการแสดงผลในอุปกรณ์มือถือ */
+@media screen and (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    #exportCsvBtn {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+    }
+    
+    .export-buttons, .report-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .export-buttons span, .report-buttons span {
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .export-buttons button, .report-buttons button {
+        width: 80%;
+    }
+}
+
+/* ลักษณะโหลดิ้ง */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column;
+}
+
+.loading-spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #6a0dad;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+.loading-text {
+    color: white;
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

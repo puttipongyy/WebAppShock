@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #8c52ff, #ff914d);
+    color: white;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 90px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background: linear-gradient(90deg, #660ea5b7, #373138);
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    color: #ffdd59;
+    font-weight: 2000;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+.navbar-logo:hover {
+    transform: scale(1.1);
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 50px; /* ระยะห่างระหว่างปุ่ม */
+    margin-right: 90px; /* ขยับให้ไม่ชิดขอบ */
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: #ffdd59;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: #ffdd59;
+    background: rgba(255, 221, 89, 0.1);
+    border-radius: 5px;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.container {
+    margin: 20px auto;
+    margin-top: 100px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff10;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
+
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 15px;
+}
+
+ul li span {
+    font-weight: bold;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px 40px;
+    background-color: white;
+    color: #6a0dad;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #ff914d;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* ปุ่ม Clear Filter */
+#clearFilterBtn {
+    display: inline-block;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 8px 15px;
+    background-color: white;
+    color: #6a0dad;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.button-group {
+    display: flex;
+    gap: 20px; /* ระยะห่างระหว่างปุ่ม */
+    justify-content: left; /* จัดให้อยู่ตรงกลาง */
+    margin-top: 20px;
+}
+
+.table-container {
+    max-height: 390px; /* กำหนดความสูงสูงสุดของตาราง */
+    overflow-y: auto; /* ทำให้สามารถเลื่อนลงไปดูข้อมูลเพิ่มเติมได้ */
+    border: white; /* เส้นขอบรอบตาราง */
+    scrollbar-width: thin; /* สำหรับ Firefox */
+    scrollbar-color: #6a0dad rgba(255, 255, 255, 0.2);    
+}
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-for-index5.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="/" class="navbar-logo">SHOCK PREDICT</a>
+            <div class="navbar-menu">
+                <a href="/">Home</a>
+                <a href="/upload">Prediction</a>
+                <a href="/result">Result</a>
+                <a href="/history">History</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Risk Prediction Result</h1>
+        <!-- 🔹 ตารางแสดงผลลัพธ์ -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Datetime</th>
+                        <th>BedID</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                        <th>Prediction</th>
+                        <th>Risk (%)</th>
+                        <th></th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="result-body">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 🔹 ปุ่มสำหรับล้างค่ากรองและ Export CSV -->
+        <div class="action-buttons">
+            <div class="button-group">
+                <!-- <button id="clearFilterBtn" onclick="clearFilters()">Clear Filter</button> -->
+                <button id="exportCsvBtn" onclick="exportTableToCSV('prediction_results.csv')">Export CSV</button>
+                <!-- <button id="selectBtn" onclick="toggleSelectMode()">Select</button> -->
+            </div>
+        </div>
+    </div>    
+    
+    <!-- 🔹 ปุ่ม Back และ Next -->
+    <div class="action-buttons">
+        <div class="button-group">
+            <a href="/upload" class="back-button">Back</a>
+            <a href="/history" class="next-button">Next</a>
+        </div>
+    </div>
+
+    <!-- 🔹 โหลด JavaScript ที่นี่ -->
+    <script src="{{ url_for('static', filename='js/scripts3.js') }}"></script>
+
+</body>
+</html>

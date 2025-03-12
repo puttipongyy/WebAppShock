@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Patient Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-for-index2.css') }}">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="/" class="navbar-logo">SHOCK PREDICT</a>
+            <div class="navbar-menu">
+                <a href="/">Home</a>
+                <a href="/upload">Prediction</a>
+                <a href="/result">Result</a>
+                <a href="/history">History</a>
+            </div>
+        </div>
+    </header>
+    <div class="main-container">
+        <div class="container">
+            <div class="upload-section">
+                <h2>Upload Patient Data Files</h2>
+                <div class="upload-button">
+                    <label for="admission">
+                        <span id="admission-label">Upload Admission File</span>
+                        <span class="icon">+</span>
+                        <input type="file" id="admission" accept=".csv" required>
+                    </label>
+                    <progress id="admission-progress" value="0" max="100" style="width: 100%; display: none;"></progress>
+                </div>
+                
+                <div class="upload-button">
+                    <label for="bedccr">
+                        <span id="bedccr-label">Upload Bedccr File</span>
+                        <span class="icon">+</span>
+                        <input type="file" id="bedccr" accept=".csv" required>
+                    </label>
+                    <progress id="bedccr-progress" value="0" max="100" style="width: 100%; display: none;"></progress>
+                </div>
+                <div class="upload-button">
+                    <label for="redcap">
+                        <span id="redcap-label">Upload Redcap File</span>
+                        <span class="icon">+</span>
+                        <input type="file" id="redcap" accept=".csv" required>
+                    </label>
+                    <progress id="redcap-progress" value="0" max="100" style="width: 100%; display: none;"></progress>
+                </div>                
+                <div class="upload-button">
+                    <label for="intakeoutput">
+                        <span id="intakeoutput-label">Upload IntakeOutput File</span>
+                        <span class="icon">+</span>
+                        <input type="file" id="intakeoutput" accept=".csv" required>
+                    </label>
+                    <progress id="intakeoutput-progress" value="0" max="100" style="width: 100%; display: none;"></progress>
+                </div>
+                
+                <div class="upload-button">
+                    <label for="monitortrack">
+                        <span id="monitortrack-label">Upload Monitortrack File</span>
+                        <span class="icon">+</span>
+                        <input type="file" id="monitortrack" accept=".csv" required>
+                    </label>
+                    <progress id="monitortrack-progress" value="0" max="100" style="width: 100%; display: none;"></progress>
+                </div>
+                
+                <div class="action-buttons">
+                    <!-- 
+                        เปลี่ยนปุ่ม Start ให้กลายเป็นปุ่มสั่ง Prediction
+                        เพราะตอนนี้ไฟล์ถูกอัปโหลดด้วย AJAX แยกต่างหาก 
+                    -->
+                    <button type="button" class="start-button" id="predict-button">Start &gt;</button>
+                    <a href="/" class="back-button">Back</a>
+                </div>
+            </div>
+        
+            <div class="info-section">
+                <h3>File Upload Guide for ICU Shock Prediction</h3>
+                <p>To ensure accurate predictions, please upload patient data files that meet the following formats and
+                    conditions</p>
+                <h4>General Conditions</h4>
+                <ul>
+                    <li>1. Patients must have stayed in the ICU for more than 24 hours.</li>
+                    <li>2. All files must be in CSV format and share the same AdmissionID across all files.</li>
+                </ul>
+                <h4>File Details and Required Formats</h4>
+                <ul>
+                    <li><a href="/details">1. Admission.csv</a></li>
+                    <li><a href="/details">2. Bedccr.csv</a></li>
+                    <li><a href="/details">3. Redcap.csv</a></li>
+                    <li><a href="/details">3. IntakeOutput.csv</a></li>
+                    <li><a href="/details">4. Monitortrack.csv</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ส่วนแสดง Progress / ข้อความ -->
+    <div id="progress-container" style="display:none; margin-top:20px;">
+        <p id="progress-message">กำลังประมวลผล...</p>
+        <progress id="progress-bar" value="0" max="100" style="width: 300px;"></progress>
+        <span id="progress-percentage">0%</span>
+    </div>    
+    <!-- script.js จะ handle การอัปโหลดไฟล์ทีละไฟล์ไปยัง /upload_single -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- script2.js แยกฟังก์ชันสั่ง Predict ออกมาไว้ไฟล์นี้ -->
+    <script src="{{ url_for('static', filename='js/scripts2.js') }}"></script>
+</body>
+</html>

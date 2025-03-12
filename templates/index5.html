@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-for-index5.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <!-- เพิ่ม FileSaver.js สำหรับการ export ไฟล์ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <!-- เพิ่ม jsPDF สำหรับการ export PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="/" class="navbar-logo">SHOCK PREDICT</a>
+            <div class="navbar-menu">
+                <a href="/">Home</a>
+                <a href="/upload">Prediction</a>
+                <a href="/result">Result</a>
+                <a href="/history">History</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Loading Overlay สำหรับแสดงสถานะการสร้างรายงาน -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">กำลังสร้างรายงาน...</div>
+    </div>
+
+    <div class="container">
+        <h1>Risk Prediction History</h1>
+        
+        <!-- 🔹 Filter Options (ใช้สำหรับกรองข้อมูล) -->
+        <!-- 🔹 ตารางแสดงผลลัพธ์ -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Datetime</th>
+                        <th>BedID</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                        <th>Prediction</th>
+                        <th>Risk (%)</th>
+                        <th>Risk Level</th>
+                        <th></th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="history-body">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 🔹 ปุ่มสำหรับล้างค่ากรอง -->
+        <div class="action-buttons">
+            <div class="button-group">
+                <button id="clearFilterBtn" onclick="clearFilters()">Clear Filter</button>
+                <button id="selectBtn" onclick="toggleSelectMode()">Select</button>
+                <button id="exportCsvBtn">Export CSV</button>
+            </div>
+        </div>
+    </div>    
+
+    <!-- 🔹 ส่วนของกราฟ (แยกออกจากตัวกรองด้านบน) -->
+    <div id="chart-container" class="chart-container" style="display: none;">
+        <h2>Risk Comparison</h2>
+        <!-- <div class="chart-controls">
+            <label for="xAxisSelect"></label>
+            <select id="xAxisSelect">
+                <option value="Datetime"></option>
+                <option value="BedID"></option>
+                <option value="Age"></option>
+                <option value="Sex"></option>
+                <option value="Prediction"></option>
+            </select>
+        </div> -->
+        <!-- พื้นที่แสดงกราฟ -->
+        <canvas id="riskChart"></canvas>
+        
+        <!-- เพิ่มปุ่มสำหรับ Export กราฟ -->
+        <div class="export-buttons">
+            <span>Export Chart: </span>
+            <button data-format="png">PNG</button>
+            <button data-format="jpeg">JPEG</button>
+            <!-- <button data-format="pdf">PDF</button> -->
+        </div>
+        
+        <!-- เพิ่มปุ่มสำหรับสร้างรายงาน (Report) -->
+        <div class="report-buttons">
+            <span>Generate Report: </span>
+            <button id="pdfReportBtn">PDF Report</button>
+            <!-- <button id="docxReportBtn">DOCX Report</button> -->
+        </div>
+        
+        <div class="action-buttons">
+            <div class="button-group">
+                <button id="clearFilterBtn" onclick="clearSelection()">Clear Selection</button>
+            </div>
+        </div>
+    </div>
+    <div class="action-buttons">
+        <div class="button-group">
+            <a href="/result" class="back-button">Back</a>
+        </div>
+    </div>
+
+    <!-- เพิ่ม FileSaver.js สำหรับการ export ไฟล์ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <!-- เพิ่ม jsPDF สำหรับการ export PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- เพิ่ม jsPDF-AutoTable สำหรับสร้างตารางใน PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <!-- เพิ่มฟอนต์ Sarabun สำหรับรองรับภาษาไทยใน PDF -->
+    <script src="https://cdn.jsdelivr.net/npm/@pdf-lib/fontkit@1.1.1/dist/fontkit.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/thai-font-for-pdf@latest/dist/fonts/THSarabun-normal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/thai-font-for-pdf@latest/dist/fonts/THSarabun-bold.min.js"></script>
+    <!-- 🔹 โหลด JavaScript ที่นี่ -->
+    <script src="{{ url_for('static', filename='js/scripts4.js') }}"></script>
+    <!-- เพิ่ม JavaScript สำหรับฟังก์ชันการส่งออก (export) -->
+    <script src="{{ url_for('static', filename='js/scripts5.js') }}"></script>
+    <!-- เพิ่มไลบรารี docx.js สำหรับสร้างไฟล์ Word -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.1.0/docx.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #8c52ff, #ff914d);
+    color: white;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; */
+}
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: linear-gradient(90deg, #660ea5b7, #ff7f50); */
+    padding: 15px 90px; /* เพิ่ม padding ทางซ้ายและขวา */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background: linear-gradient(90deg, #660ea5b7, #373138);
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    color: #ffdd59;
+    font-weight: 2000;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+.navbar-logo:hover {
+    transform: scale(1.1);
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 50px; /* ระยะห่างระหว่างปุ่ม */
+    margin-right: 90px; /* ขยับให้ไม่ชิดขอบ */
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    white-space: nowrap;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: #ffdd59;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: #ffdd59;
+    background: rgba(255, 221, 89, 0.1);
+    border-radius: 5px;
+}
+
+.navbar a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+/* ถ้าต้องการให้ .main-container จัดกึ่งกลางจอในแนวนอน */
+.main-container {
+    max-width: 900px;
+    margin: 30px auto;
+    margin-top: 100px;
+    padding: 20px;
+    /* กรณีอยากได้ background โปร่งใสแบบเดิม */
+    background-color: #ffffff10;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    /* display: flex;  <-- ถ้าต้องการแนวตั้งก็ไม่ต้องใส่ flex ที่นี่ */
+    /* flex-direction: column; <-- ถ้าต้องการแนวตั้งทั้งหมดใน .main-container */
+}
+/* .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #ffffff10;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    width: 100%;
+} */
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.upload-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.upload-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+}
+
+.upload-button input {
+    display: none;
+}
+
+.upload-button label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a0135;
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 2px solid white;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.upload-button label:hover {
+    background: linear-gradient(to right, #ff914d, #8c52ff);
+}
+
+.upload-button span {
+    font-size: 1.1rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.upload-button .icon {
+    font-size: 1.5rem;
+}
+
+.action-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.start-button,
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6a0dad;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 30px;
+    margin: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.start-button:hover,
+.back-button:hover {
+    background-color: white;
+    color: #6a0dad;
+    transform: translateY(-5px);
+}
+
+.info-section {
+    flex: 1;
+    color: white;
+}
+
+.info-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.info-section p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.info-section ul {
+    margin-left: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.info-section ul li {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.info-section ul li a {
+    color: #ffdd59;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.info-section ul li a:hover {
+    text-decoration: underline;
+}
+
+#progress-container {
+    /* margin-top: 20px; */
+    /* max-width: 900px; */
+    margin: 30px auto;
+    padding: 20px;
+    /* margin: 30px auto; */
+    /* margin-bottom: 20px; */
+    text-align: center; /* จัดวางข้อความและ progress bar ให้กึ่งกลาง */
+    /* กล่องใส ๆ (โปร่งแสง) */
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-radius: 10px;       /* มุมโค้งของกล่อง */
+    padding: 20px;            /* เว้นขอบด้านในของกล่อง */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+.result-container {
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center; 
+    /* กล่องใส ๆ (โปร่งแสง) */
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-radius: 10px; 
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+

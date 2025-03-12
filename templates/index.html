@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shock Predict</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-for-index1.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <a href="#" class="navbar-logo">SHOCK PREDICT</a>
+            <div class="navbar-menu">
+                <a href="/">Home</a>
+                <a href="/upload">Prediction</a>
+                <a href="/result">Result</a>
+                <a href="/history">History</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 class="header">
+            PREDICTS
+            SHOCK RISK IN
+            ICU PATIENTS
+        </h1>
+        <p class="subheader">ShockPredict is a web application designed to predict the risk of shock in ICU patients,
+            helping healthcare professionals make timely interventions.</p>
+        <a href="/upload" class="button">Predict</a>
+    </main>
+
+    <img src="./static/picture/human-image.png" alt="Stylized Human" class="background-image">
+
+    <footer>
+        &copy; 2025 ShockPredict. All rights reserved.
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-for-index3.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <a href="/" class="navbar-logo">SHOCK PREDICT</a>
+            <div class="navbar-menu">
+                <a href="/">Home</a>
+                <a href="/upload">Prediction</a>
+                <a href="/result">Result</a>
+                <a href="/history">History</a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>File Details</h1>
+
+        <!-- Admission.csv -->
+        <h2>1. Admission.csv</h2>
+        <p>Description: Contains general patient information.</p>
+        <ul>
+            <li><span>AdmissionID:</span> string</li>
+            <li><span>HN:</span> string</li>
+            <li><span>VN:</span> string</li>
+            <li><span>Age:</span> string</li>
+            <li><span>Sex:</span> string</li>
+        </ul>
+
+        <!-- Bedccr.csv -->
+        <h2>2. Bedccr.csv</h2>
+        <p>Description: Contains laboratory test results.</p>
+        <ul>
+            <li><span>LIVE_TidalVolume:</span> float</li>
+            <li><span>LIVE_RR_bed:</span> float</li>
+            <li><span>Temp_bed:</span> float</li>
+            <li><span>ICUDate:</span> datetime (format: YYYY-MM-DD HH:mm:ss)</li>
+        </ul>
+
+        <!-- IntakeOutput.csv -->
+        <h2>3. IntakeOutput.csv</h2>
+        <p>Description: Contains details about the fluid intake and output for patients during their ICU stay, segmented
+            by shifts and daily totals.</p>
+        <ul>
+            <li><span>AdmissionID:</span> int</li>
+            <li><span>TotalIntake_Shift1:</span> float</li>
+            <li><span>TotalIntake_Shift2:</span> float</li>
+            <li><span>TotalIntake_Shift3:</span> float</li>
+            <li><span>TotalIntake_24hr:</span> float</li>
+            <li><span>TotalIntake_IV:</span> float</li>
+            <li><span>TotalIntake_ORAL:</span> float</li>
+            <li><span>TotalOutput_Shift1:</span> float</li>
+            <li><span>TotalOutput_Shift2:</span> float</li>
+            <li><span>TotalOutput_Shift3:</span> float</li>
+            <li><span>TotalOutput_24hr:</span> float</li>
+            <li><span>IO_Shift1:</span> float</li>
+            <li><span>IO_Shift2:</span> float</li>
+            <li><span>IO_Shift3:</span> float</li>
+            <li><span>IO_24hr:</span> float</li>
+            <li><span>ICUDate:</span> datetime (format: YYYY-MM-DD HH:MM:SS)</li>
+        </ul>
+
+        <!-- Monitortrack.csv -->
+        <h2>4. Monitortrack.csv</h2>
+        <p>Description: Contains real-time physiological monitoring data for ICU patients, including vital signs and
+            blood pressure readings.</p>
+        <ul>
+            <li><span>AdmissionID:</span> int</li>
+            <li><span>HR:</span> float</li>
+            <li><span>RR:</span> float</li>
+            <li><span>BP_SYS:</span> float</li>
+            <li><span>BP_DIA:</span> float</li>
+            <li><span>BP_TYPE:</span> varchar</li>
+            <li><span>MAP:</span> float</li>
+            <li><span>O2SAT:</span> float</li>
+            <li><span>ICUDate:</span> datetime (format: YYYY-MM-DD HH:MM:SS)</li>
+        </ul>
+
+        <!-- Back Button -->
+        <a href="/upload" class="back-button">Back</a>
+    </div>
+</body>
+
+</html>
